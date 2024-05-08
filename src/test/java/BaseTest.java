@@ -14,13 +14,10 @@ public class BaseTest extends Utils {
         browserManager.openBrowser();
     }
 
-    @AfterMethod
-    //method to close browser
-    public void tearDown(ITestResult result){
-        if (!result.isSuccess()){
-            takeScreenShot(result.getName());
-        }
+   @AfterMethod
+    //method to close browser(all web page)
+    public void tearDown(ITestResult result) {if (!result.isSuccess()){takeScreenShot(result.getName());}
 
-       browserManager.closeBrowser();
+        browserManager.closeBrowser();
     }
 }

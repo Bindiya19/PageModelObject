@@ -30,7 +30,7 @@ public class BrowserManager extends Utils{
             System.out.println("Your browser is name wrong"+browser);
         }
         //to open the url
-        driver.get("https://demo.nopcommerce.com/");
+        driver.get(loadProp.getProperty("Url"));
 
         //maximize the browser window
         driver.manage().window().maximize();

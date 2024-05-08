@@ -42,7 +42,7 @@ public class Utils extends BasePage {
     public static void clickOnElement(By by) {driver.findElement(by).click();}
 
     //method for to click on group or selection of Elements(more then one)
-    //public static void clickOnElements(By by){driver.findElements(by).size();}
+    public static void clickOnElements(By by){driver.findElements(by).size();}
 
     //method for type text as string in text box
     public static void typeText(By by, String text) {driver.findElement(by).sendKeys(text);}
@@ -50,6 +50,21 @@ public class Utils extends BasePage {
     //method for capture text of the element
     public static String getTextFromElement(By by) {return driver.findElement(by).getText();}
 
+    //method for get text from alert
+    public static String getTextFromAlertMsg() {
+        return driver.switchTo().alert().getText();
+    }
+
+    //method to accept alert
+    public static void acceptAlert() {
+        driver.switchTo().alert().accept();
+    }
+
+    //method to get url
+    public static String url(){return driver.getCurrentUrl();}
+
+    //method to switch to new page
+    public static void handlesMultiWindow(){driver.getWindowHandles();}
 
     //to tell the WebDriver to wait for a certain amount of time when trying to find an element if it is not immediately available
     public static void waitForWebElement() {driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);}
@@ -133,8 +148,9 @@ public class Utils extends BasePage {
         //call getScreenshot as method to create image file
         File SrcFile = screenshot.getScreenshotAs(OutputType.FILE);
 
+
         //Move image file to new destination   //copy file at destination
-        try {FileUtils.copyFile(SrcFile, new File("src/test/Screenshots"+text+randomDate()+".png"));}
+        try {FileUtils.copyFile(SrcFile, new File("src/test/Resource/ScreenShots"+text+randomDate()+".png"));}
         catch (IOException e)
         {throw new  RuntimeException(e);}
     }
